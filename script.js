@@ -23,10 +23,9 @@ function playerSelection (){
     return playerChoice = playerChoice.toLowerCase()
 }
 
-computerChoice = getComputerChoice()
-playerChoice = playerSelection()
 
 
+let score = 0
 function playRound (computerChoice, playerChoice){
     let result
     if (computerChoice === playerChoice){
@@ -34,29 +33,55 @@ function playRound (computerChoice, playerChoice){
     }
     else if (computerChoice === "rock" && playerChoice === "paper"){
         result = "You won, paper beats rock!"
+        score++
     }
     else if (computerChoice === "rock" && playerChoice === "scissors"){
         result = "You lost, rock beats scissors!"
+        score--
     }
     else if (computerChoice === "paper" && playerChoice === "scissors"){
         result = "You won, scissors beats paper!"
+        score++
     }
     else if (computerChoice === "paper" && playerChoice === "rock"){
         result = "You lost, paper beats rock!"
+        score--
     }
     else if (computerChoice === "scissors" && playerChoice === "rock"){
         result = "You won, rock beats scissors!"
+        score++
+        
     }
     else if (computerChoice === "scissors" && playerChoice === "paper"){
         result = "You lost, scissors beats paper!"
+        score--
     }
     else{
         result = "Error. Prob typed wrong"
     }
+    alert(result)
     return result
 }
 
-console.log(playRound(computerChoice, playerChoice))
 
+function game(){
+    let round = 1
+    while (round < 6){
+        playRound(getComputerChoice(), playerSelection())
+        round++
+    }
+    if (score < 0){
+        finalResult = "You lost the game!"
+    }
+    else if (score === 0){
+        finalResult = "The game is draw!"
+    }
+    else{
+        finalResult = "You won the game!"
+    }
+    console.log(finalResult)
+    return finalResult
+}
 
+game()
 
