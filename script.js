@@ -25,7 +25,8 @@ function playerSelection (){
 
 
 
-let score = 0
+let computerScore = 0
+let playerScore = 0
 function playRound (computerChoice, playerChoice){
     let result
     if (computerChoice === playerChoice){
@@ -33,28 +34,28 @@ function playRound (computerChoice, playerChoice){
     }
     else if (computerChoice === "rock" && playerChoice === "paper"){
         result = "You won, paper beats rock!"
-        score++
+        playerScore++
     }
     else if (computerChoice === "rock" && playerChoice === "scissors"){
         result = "You lost, rock beats scissors!"
-        score--
+        computerScore++
     }
     else if (computerChoice === "paper" && playerChoice === "scissors"){
         result = "You won, scissors beats paper!"
-        score++
+        playerScore++
     }
     else if (computerChoice === "paper" && playerChoice === "rock"){
         result = "You lost, paper beats rock!"
-        score--
+        computerScore++
     }
     else if (computerChoice === "scissors" && playerChoice === "rock"){
         result = "You won, rock beats scissors!"
-        score++
+        playerScore++
         
     }
     else if (computerChoice === "scissors" && playerChoice === "paper"){
         result = "You lost, scissors beats paper!"
-        score--
+        computerScore++
     }
     else{
         result = "Error. Prob typed wrong"
@@ -63,8 +64,27 @@ function playRound (computerChoice, playerChoice){
     return result
 }
 
+const rockBtn = document.querySelector('#rock-btn')
+rockBtn.addEventListener('click', function (e){
+    playerChoice = rockBtn.textContent.toLowerCase()
+    playRound(getComputerChoice(), playerChoice)
+})
 
-function game(){
+const paperBtn = document.querySelector('#paper-btn')
+paperBtn.addEventListener('click', function (e){
+    playerChoice = paperBtn.textContent.toLowerCase()
+    playRound(getComputerChoice(), playerChoice)
+})
+
+const scissorsBtn = document.querySelector('#scissors-btn')
+scissorsBtn.addEventListener('click', function (e){
+    playerChoice = scissorsBtn.textContent.toLowerCase()
+    playRound(getComputerChoice(), playerChoice)
+})
+
+
+
+/*function game(){
     let round = 1
     while (round < 6){
         playRound(getComputerChoice(), playerSelection())
@@ -84,4 +104,4 @@ function game(){
 }
 
 game()
-
+*/
