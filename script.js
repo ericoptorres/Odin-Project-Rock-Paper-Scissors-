@@ -2,7 +2,6 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
-
 function getComputerChoice () {
     let numberGenerated = getRandomInt(1, 3)
     let computerChoice = ""
@@ -23,10 +22,14 @@ function playerSelection (){
     return playerChoice = playerChoice.toLowerCase()
 }
 
-
-
 let computerScore = 0
 let playerScore = 0
+const playerContainer = document.querySelector('.player-score')
+const computerContainer = document.querySelector('.computer-score')
+const bottomScore = document.querySelector('.score')
+const roundLog = document.createElement('div')
+
+
 function playRound (computerChoice, playerChoice){
     let result
     if (computerChoice === playerChoice){
@@ -51,7 +54,6 @@ function playRound (computerChoice, playerChoice){
     else if (computerChoice === "scissors" && playerChoice === "rock"){
         result = "You won, rock beats scissors!"
         playerScore++
-        
     }
     else if (computerChoice === "scissors" && playerChoice === "paper"){
         result = "You lost, scissors beats paper!"
@@ -60,7 +62,11 @@ function playRound (computerChoice, playerChoice){
     else{
         result = "Error. Prob typed wrong"
     }
-    alert(result)
+    playerContainer.textContent = `You: ${playerScore}`
+    computerContainer.textContent = `Computer: ${computerScore}`
+    roundLog.textContent = result
+    bottomScore.appendChild(roundLog)
+
     return result
 }
 
@@ -81,6 +87,8 @@ scissorsBtn.addEventListener('click', function (e){
     playerChoice = scissorsBtn.textContent.toLowerCase()
     playRound(getComputerChoice(), playerChoice)
 })
+
+
 
 
 

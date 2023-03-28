@@ -58,11 +58,19 @@ button {
 
 .score {
     font-size: 150%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+spam {
+    font-size: 200%;
 }
 
 .bottom-score{
-    margin-top: 20px;
+    margin: 10px;
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 50px;
 }
