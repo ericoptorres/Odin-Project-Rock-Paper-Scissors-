@@ -28,7 +28,12 @@ const playerContainer = document.querySelector('.player-score')
 const computerContainer = document.querySelector('.computer-score')
 const bottomScore = document.querySelector('.score')
 const roundLog = document.createElement('div')
+const buttons = document.querySelectorAll('button')
 
+function disableButton () { buttons.forEach(element => {
+    element.disabled = true
+})
+}
 
 function playRound (computerChoice, playerChoice){
     let result
@@ -64,6 +69,16 @@ function playRound (computerChoice, playerChoice){
     }
     playerContainer.textContent = `You: ${playerScore}`
     computerContainer.textContent = `Computer: ${computerScore}`
+    
+    if (playerScore == 5){
+        result = "Game over. You are the winner!!! Gz"
+        disableButton()
+    }
+    else if(computerScore == 5){
+        result = "Game over. You lost!!! Maybe another time!"
+        disableButton()
+    }
+
     roundLog.textContent = result
     bottomScore.appendChild(roundLog)
 
